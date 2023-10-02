@@ -1,10 +1,10 @@
 <?php
 
-use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,9 +34,9 @@ Route::put('/customers/{customer}', [CustomerController::class, 'updated']);
 Route::delete('/customers', [CustomerController::class, 'destroy']);
 
 
-Route::get('/products', [CustomerController::class, 'index']);
-Route::get('/products/{product}', [CustomerController::class, 'show']);
-Route::post('/products', [CustomerController::class, 'store']);
-Route::put('/products/{product}', [CustomerController::class, 'updated']);
-Route::delete('/products/{$product}', [CustomerController::class, 'destroy']);
+Route::get('/products', [ProductController::class, 'index']);
+Route::get('/products/{product}', [ProductController::class, 'show']);
+Route::post('/products', [ProductController::class, 'store']);
+Route::put('/products/{product}', [ProductController::class, 'updated']);
+Route::delete('/products/{product}', [ProductController::class, 'destroy']);
 
