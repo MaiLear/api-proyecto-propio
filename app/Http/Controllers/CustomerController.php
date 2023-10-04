@@ -7,7 +7,11 @@ use App\Models\Customer;
 
 class CustomerController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
+        if($request->value){
+            $customer = Customer::values($request->value)->get();
+            return response()->json($customer);
+        }
         $customer = Customer::all();
         return response()->json($customer);
     }
