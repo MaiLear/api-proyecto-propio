@@ -24,7 +24,7 @@ class AdminController extends Controller
         $admin->first_name = $request->first_name;
         $admin->second_name = $request->second_name;
         $admin->email = $request->email;
-        $admin->image = $request->image;
+        $admin->img = $request->img;
         $admin->password = $request->password;
         $admin->save();
         $data = ['msg'=>'admin created successfully',
