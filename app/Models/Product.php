@@ -12,12 +12,17 @@ class Product extends Model
 
     //Query scope
 
-public function scopeValues(Builder $query, string $value):void
-{
-    if($value){
-         $query->where('name', 'LIKE', '%'."$value".'%')
-        ->orWhere('unit_price', 'LIKE', '%'."$value".'%')
-        ->orWhere('stock', 'LIKE', '%'."$value".'%');
+    public function scopeValues(Builder $query, string $value): void
+    {
+        if ($value) {
+            $query->where('name', 'LIKE', '%' . "$value" . '%')
+                ->orWhere('unit_price', 'LIKE', '%' . "$value" . '%')
+                ->orWhere('stock', 'LIKE', '%' . "$value" . '%');
+        }
     }
+
+    public function scopeNews(Builder $query): void
+    {
+        $query->where('new_product', 1);
     }
 }
