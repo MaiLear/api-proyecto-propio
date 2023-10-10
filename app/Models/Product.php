@@ -10,6 +10,8 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $guarded = [''];
+
     //Query scope
 
     public function scopeValues(Builder $query, string $value): void

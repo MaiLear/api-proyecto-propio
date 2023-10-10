@@ -30,16 +30,10 @@ class ProductController extends Controller
 
     public function store(Request $request){
         $category = Category::where('name', $request->category)->first();
-        $products = new Product();
-        $products->name = $request->name;
-        $products->brand = $request->brand;
-        $products->unit_price = $request->unit_price;
-        $products->stock = $request->stock;
-        $products->categories_id = $category->id ?? null;
-        $products->new_product = $request->new_product ? true : false;
-        $products->img = $request->img;
-        $products->save();
-        $data = ['msg' => 'product created succesfull', 'product'=>$products, 'categories'=>$category];
+        $data = $request->all();
+        $data['categories_id'] = $category->id ?? null;
+        $product = Product::create($data);
+        $data = ['msg' => 'product created succesfull', 'product'=>$product, 'categories'=>$category];
         return response()->json($data);
     }
 

@@ -25,13 +25,7 @@ class CustomerController extends Controller
     }
 
     public function store(Request $request){
-        $customer = new Customer();
-        $customer->first_name = $request->first_name;
-        $customer->second_name = $request->second_name;
-        $customer->last_name = $request->last_name;
-        $customer->email = $request->email;
-        $customer->password = $request->password;
-        $customer->save();
+        $customer = Customer::create($request->all());
         $data = ['msg'=>'customer created successfully',
         'admin'=>$customer];
         return response()->json($data);

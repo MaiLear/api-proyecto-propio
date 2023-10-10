@@ -10,6 +10,8 @@ class Admin extends Model
 {
     use HasFactory;
 
+    protected $guarded = [''];
+
     protected function firstName(): Attribute
     {
         return Attribute::make(

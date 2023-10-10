@@ -20,13 +20,7 @@ class AdminController extends Controller
     }
 
     public function store(Request $request){
-        $admin = new Admin();
-        $admin->first_name = $request->first_name;
-        $admin->second_name = $request->second_name;
-        $admin->email = $request->email;
-        $admin->img = $request->img;
-        $admin->password = $request->password;
-        $admin->save();
+        $admin = Admin::create($request->all());
         $data = ['msg'=>'admin created successfully',
         'admin'=>$admin];
         return response()->json($data);
