@@ -26,7 +26,7 @@ class AdminController extends Controller
         return response()->json($data);
     }
 
-    public function updated(Request $request, Admin $admin){
+    public function update(Request $request, Admin $admin){
         $admin->first_name = $request->first_name ?? $admin->first_name;
         $admin->second_name = $request->second_name ?? $admin->second_name;
         $admin->email = $request->email ?? $admin->email;

@@ -37,7 +37,7 @@ class ProductController extends Controller
         return response()->json($data);
     }
 
-    public function updated(Request $request,Product $product){
+    public function update(Request $request,Product $product){
         $category = Category::where('name', $request->category)->first();
         $product->name = $request->name ?? $product->name;
         $product->unit_price = $request->unit_price ?? $product->unit_price;
