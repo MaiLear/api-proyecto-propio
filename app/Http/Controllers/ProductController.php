@@ -14,7 +14,7 @@ class ProductController extends Controller
             return response()->json($products);
         }
         else{
-            $products = Product::all();
+            $products = Product::paginate(2);
             $newProducts = Product::news()->get();
             $data = ['products'=> $products, 'newProducts' => $newProducts];
             return response()->json($data);
@@ -52,6 +52,23 @@ class ProductController extends Controller
     public function destroy(Product $product){
         $product->delete();
         $data = ['msg' => 'product deleted succesfull', 'product' => $product];
+        return response()->json($data);
+    }
+
+
+    public function active($idProduct){
+        $product = Product::find($idProduct);
+        $product->status = true;
+        $product->save();
+        $data=['msg'=>'product actived'];
+        return response()->json($data);
+    }
+
+    public function inactive($idProduct){
+        $product = Product::find($idProduct);
+        $product->status = false;
+        $product->save();
+        $data = ['msg'=>'Product sucess desactive', 'product'=>$product];
         return response()->json($data);
     }
 }
