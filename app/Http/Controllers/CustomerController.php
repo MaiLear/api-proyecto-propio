@@ -49,4 +49,11 @@ class CustomerController extends Controller
             'admin'=>$customer];
             return response()->json($data);
     }
+
+
+    public function cart(Request $request){
+        $customer = Customer::where("email","=",$request->email)->first();
+        $customer->
+    }
+
 }

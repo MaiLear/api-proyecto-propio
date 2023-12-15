@@ -21,6 +21,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('/cart/store',[CustomerController::class,'cart']);
+
 Route::get('/products/status/{idProduct}', [ProductController::class, 'inactive']);
 
 Route::get('/products/active/{idProduct}', [ProductController::class, 'active']);
